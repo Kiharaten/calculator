@@ -1,39 +1,31 @@
+/*************************************************************/
+/* @file name       : main.c                                 */
+/* @brief           : メインプログラム                       */
+/* @author          : Tenda                                  */
+/*************************************************************/
+
 /* file include */
-#include <stdio.h>   // 標準入出力（printf, scanf など）
-#include <stdlib.h>  // 標準ライブラリ（malloc, exit など）
-#include <string.h>  // 文字列処理（strcpy, strlen など）
+#include "main.h"
 
-/* グローバル定数 */
-#define NUM_ZERO    0
-#define NUM_ONE     1
-#define NUM_TWO     2
-#define NUM_THREE   3
-
-/* 関数プロトタイプ宣言 */
-void print_text(int get_number) ;
-
+/*************************************************************/
+/* @function name   : メイン関数                             */
+/* @brief           : メインルーチン処理をする関数           */
+/* @author          : Tenda                                  */
+/*************************************************************/
 int main(void) {
-    print_text( NUM_THREE ); /* 文字表示関数 */
-    return(0);
-}
+    pthread_t tid;
+    int arg = 42;
 
-/*****************************************
- * 文字表示関数
- * 数字を受け取って、対応する文字をprintfする
- * Author:Tenda
- *****************************************/
-void print_text(int get_number) {
-    if ( NUM_ZERO == get_number ) {
-        printf("Hello\n") ;
+    /* スレッドを作成 */
+    if (pthread_create(&tid, NULL, thread_func, &arg) != 0) {
+        perror("pthread_create");
+        return 1;
     }
-    else if ( NUM_ONE == get_number ) {
-        printf("Kawasaki\n") ;
-    }
-    else if ( NUM_TWO == get_number ) {
-        printf("Toyota\n") ;
-    }
-    else {
-        printf("Tenda\n") ;
-    }
+
+    // スレッドの終了を待機
+    pthread_join(tid, NULL);
+
+    printf("メインスレッド終了\n");
+    return 0;
 }
 /* EOF */

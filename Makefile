@@ -1,7 +1,12 @@
 #Makefile
 
 all:
-	gcc src/main.c -o main.o
+	gcc -o main.o \
+	src/main.c \
+	src/functions.c
 
 clean:
-	rm -f *.o *.a *.out
+	rm -f \
+	*.o \
+	*.a \
+	*.out
