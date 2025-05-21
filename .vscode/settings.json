@@ -1,6 +1,11 @@
 {
     "files.associations": {
         "string.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "__bit_reference": "c",
+        "bitset": "c",
+        "unordered_map": "c",
+        "chrono": "c",
+        "functions.h": "c"
     }
 }

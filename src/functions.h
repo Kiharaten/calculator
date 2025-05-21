@@ -10,8 +10,8 @@
 #include "main.h"
 
 /* 関数プロトタイプ宣言 */
-void* thread_func(void* arg) ;
-void print_text( int get_number ) ;
+void* thread_100ms( void* arg ) ;
+void print_text( void ) ;
 
 #endif /* FUNCTIONS_H */
 /* EOF */
