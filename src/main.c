@@ -4,53 +4,52 @@
 /* @author          : Tenda                                  */
 /*************************************************************/
 
-/* file include */
-#include "main.h"
+// /* file include */
+// #include "main.h"
 
-/* global variables */
-volatile    u1 u1gv_hoge ;      /* 変数     */
-volatile    u1 u1gf_fuga ;      /* フラグ   */
-const       u1 u1gk_constant ;  /* 定数     */
+// /* global variables */
+// volatile    u1 u1gv_hoge ;      /* 変数     */
+// volatile    u1 u1gf_fuga ;      /* フラグ   */
+// const       u1 u1gk_constant ;  /* 定数     */
 
-/*************************************************************/
-/* @function name   : メイン関数                             */
-/* @brief           : メインルーチン処理をする関数           */
-/* @author          : Tenda                                  */
-/*************************************************************/
-int main( void ) {
-    /* 宣言 */
-    pt tid_100ms ;
-    u1 u1t_count ;
+// /*************************************************************/
+// /* @function name   : メイン関数                             */
+// /* @brief           : メインルーチン処理をする関数           */
+// /* @author          : Tenda                                  */
+// /*************************************************************/
+// int main( void ) {
+//     /* 宣言 */
+//     pt tid_100ms ;
+//     u1 u1t_count ;
 
-    /* 初期化 */
-    u1t_count = NUM_ZERO ;
+//     /* 初期化 */
+//     u1t_count = NUM_ZERO ;
 
-    while( TRUE ) {
-        /* スレッドを生成 */
-        if ( pthread_create( &tid_100ms, NULL, thread_100ms, &u1t_count ) != 0 ) {
-            perror( "pthread_create" ) ;
-            exit( NG ) ; /* 生成失敗した場合、異常値で終了する */
-        }
+//     while( TRUE ) {
+//         /* スレッドを生成 */
+//         if ( pthread_create( &tid_100ms, NULL, thread_100ms, &u1t_count ) != 0 ) {
+//             perror( "pthread_create" ) ;
+//             exit( NG ) ; /* 生成失敗した場合、異常値で終了する */
+//         }
 
-        /* スレッドの終了を待機 */
-        pthread_join( tid_100ms, NULL ) ;
-        printf( "thread is end.\n" ) ;
+//         /* スレッドの終了を待機 */
+//         pthread_join( tid_100ms, NULL ) ;
+//         printf( "thread is end.\n" ) ;
 
-        /* wait task count */
-        usleep( TASK_B * TIME_1000 ) ;
+//         /* wait task count */
+//         usleep( TASK_B * TIME_1000 ) ;
 
-        /* ループカウント */
-        u1t_count++ ;
+//         /* ループカウント */
+//         u1t_count++ ;
 
-        /* 終了判定 */
-        if( LOOP_MAX == u1t_count ) {
-            printf( "\nスレッドを%d回実行しました。\n", u1t_count ) ;
-            exit( OK ) ; /* スレッドを10回実行した場合、正常値で終了する */
-        }
-    }
-}
+//         /* 終了判定 */
+//         if( LOOP_MAX == u1t_count ) {
+//             printf( "\nスレッドを%d回実行しました。\n", u1t_count ) ;
+//             exit( OK ) ; /* スレッドを10回実行した場合、正常値で終了する */
+//         }
+//     }
+// }
 
-/*
 #include <stdio.h>
 #include <stdlib.h>
 #include <signal.h>
@@ -154,6 +153,5 @@ int main(int argc,char *argv[]){
 
     return 0;
 }
-*/
 
 /* EOF */
