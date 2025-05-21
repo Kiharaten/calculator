@@ -86,6 +86,9 @@ void thread_func2(void){
         ret = pthread_cond_wait(&cond,&m);
         if(ret == 0){
             clock_gettime(CLOCK_REALTIME,&curTime);
+            printf("¥033[2J");   /* 画面をクリア */
+            printf("¥033[5;10H"); /* カーソルを移動 */
+            printf("¥033[33m");   /* 文字色を黄色に */
             if(curTime.tv_nsec < lastTime.tv_nsec){
                 printf("Interval = %10ld.%09ld\n",curTime.tv_sec - lastTime.tv_sec - 1,curTime.tv_nsec + 1000000000 - lastTime.tv_nsec);
             }
